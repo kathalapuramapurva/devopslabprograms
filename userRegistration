@@ -1,0 +1,67 @@
+MAIN.PY
+from flask import Flask,render_template,request
+app=Flask(_name_)
+
+@app.route('/')
+def home()
+    return render_template('index1.html')
+@app.route('/register',methods=['POST'])
+def register():
+    if request.method=="POST":
+        name=request.form['name']
+        email=request.form['email']
+        password=request.form['password']
+    return render_template("success.html")
+if _name=="main_":
+    print("appraveenurva")
+    app.run(host = '0.0.0.0',port = 9000)
+dockerfile
+FROM python:3.7.4
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-catch-dir -r requirements.txt
+COPY . .
+CMD ["python","main.py"]
+
+success.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Document</title>
+</head>
+<body>
+   <h1>Registration Successfull!!</h1>
+</body>
+</html>
+
+requirements.txt
+Flask==2.1.0
+Werkzeug==2.0.2
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Registration form</title>
+</head>
+<body>
+   <h1>Registration Form!!</h1>
+   <form action="/register" method="post">
+       <label for="name"> name=  </label>
+       <input type="text" id="name" name="name" required ><br >
+        <label for="email"> email=  </label>
+       <input type="email" id="email" name="email" required ><br >
+        <label for="password"> password=  </label>
+       <input type="password" id="password" name="password" required ><br >
+       <input type="submit" value="register"  >
+   </form>
+</body>
+</html>
+
+docker -v
+docker build -t imagename .
+docker run -p 9000:9000 imagename
+python --version
